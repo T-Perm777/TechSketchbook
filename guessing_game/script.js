@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		const value = Number(num_input.value);
 		if (num_input.checkValidity()) {
 			if (value == rand) {
-				output.textContent = "Correct in " + tries + " tries! Press the button below to play again.";
+				output.textContent = "Correct in " + tries + " tries! Press the button above to play again.";
 			}
 			else if (value < rand) {
 				output.textContent = "The number you are seeking is larger. This is try number " + tries + " .";
