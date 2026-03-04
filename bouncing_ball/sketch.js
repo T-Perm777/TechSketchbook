@@ -4,61 +4,54 @@ const ballxspeed = document.getElementById("ballxspeed");
 const ballyspeed = document.getElementById("ballyspeed");
 const start = document.getElementById("start");
 const restart = document.getElementById("restart");
+const hitsout = document.getElementById("hits");
+const xvelocity = document.getElementById("xvelocity");
+const yvelocity = document.getElementById("yvelocity");
+const ballcoords = document.getElementById("ballcoords");
 let started = 0;
 let x = 200;
 let y = 200;
 let xspeed = 5;
 let yspeed = 3;
+let hits = 0;
 start.addEventListener("click", function() {
   if (!ballx.checkValidity()) {
     output.textContent += "Please enter a number. Proceeding with default x coordinate. ";
-    console.log("Ballx invalid");
   }
   else if (Number(ballx.value) < 25 || Number(ballx.value) > 725) {
     output.textContent += "Too close to edge. Proceeding with default x coordinate. ";
-    console.log("Ballx oob");
   }
   else {
     x = Number(ballx.value);
-    console.log("Ballx valid");
   }
   if (!bally.checkValidity()) {
     output.textContent += "Please enter a number. Proceeding with default y coordinate. "
-    console.log("Bally invalid");
   }
   else if (Number(bally.value) < 25 || Number(bally.value) > 725) {
     output.textContent += "Too close to edge. Proceeding with default y coordinate. "
-    console.log("Bally oob");
   }
   else {
     y = Number(bally.value);
-    console.log("bally valid");
   }
   ballx.disabled = true;
   bally.disabled = true;
   if (!ballxspeed.checkValidity()) {
     output.textContent += "Please enter a number. Proceeding with default x speed. ";
-    console.log("ballxspeed invalid");
   }
   else if (Number(ballxspeed.value) == 0) {
     output.textContent += "Please enter a nonzero speed. Proceeding with default x speed. ";
-    console.log("ballxspeed 0");
   }
   else {
     xspeed = Number(ballxspeed.value);
-    console.log("ballxpseed valid");
   }
   if (!ballyspeed.checkValidity()) {
     output.textContent += "Please enter a number. Proceeding with default y speed. ";
-    console.log("ballyspeed invalid");
   }
   else if (Number(ballyspeed.value) == 0) {
     output.textContent += "Please enter a nonzero speed. Proceeding with default y speed. ";
-    console.log("ballyspeed 0");
   }
   else {
     yspeed = Number(ballyspeed.value);
-    console.log("ballyspeed valid");
   }
   ballxspeed.disabled = true;
   ballyspeed.disabled = true;
@@ -67,6 +60,9 @@ start.addEventListener("click", function() {
 restart.addEventListener("click", function() {location.reload();});
 function setup() {
   createCanvas(750, 750);
+    xvelocity.textContent = "x velocity: " + xspeed;
+    yvelocity.textContent = "y velocity: " + yspeed;
+  ballcoords.textContent = "Ball coords: (" + x + ", " + y + ")";
 }
 
 function draw() {
@@ -79,9 +75,16 @@ function draw() {
   x += xspeed;
   y += yspeed;
   if (x > width - 25 || x < 25) {
+    hits++;
     xspeed *= -1;
+    xvelocity.textContent = "x velocity: " + xspeed;
+    hitsout.textContent = "Hits: " + hits;
   }
   if (y > height - 25 || y < 25) {
+    hits++;
     yspeed *= -1;
+    yvelocity.textContent = "y velocity: " + yspeed;
+    hitsout.textContent = "Hits: " + hits;
   }
+  ballcoords.textContent = "Ball coords: (" + x + ", " + y + ")";
 }
