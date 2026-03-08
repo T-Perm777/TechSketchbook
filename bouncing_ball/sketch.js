@@ -58,6 +58,9 @@ start.addEventListener("click", function() {
 	started = 1;
 });
 restart.addEventListener("click", function() {location.reload();});
+function getRand(min, max) {
+	return Math.floor(Math.random() * ((max + 1) - min) + min);
+}
 function setup() {
 	createCanvas(750, 750);
 	xvelocity.textContent = "x velocity: " + xspeed;
