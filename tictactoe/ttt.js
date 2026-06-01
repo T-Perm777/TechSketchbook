@@ -58,7 +58,7 @@ function checkWin() {
                 filled++;
             }
         }
-        if (filled == 9) {
+        if (filled == 9 && !allSame) {
             winnerText.textContent = "Draw.";
         }
     }
