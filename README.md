@@ -1,5 +1,8 @@
 # TechSketchbook
      
 
-## OK I don't really know what to put here.
-### TechSketchbook is a website for little tech doodles I make. Not much to it.
+## TechSketchbook is just a place for tech blurbs I make.
+
+There really isn't much right now, but I plan to keep adding more minigames and such.
+
+### Most recent game added: Tic Tac Toe
