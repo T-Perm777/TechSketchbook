@@ -40,6 +40,9 @@ resetBtn.addEventListener("click", function() {
     }
     winnerText.textContent = "";
     turnText.textContent = "Turn: X";
+    for (let i = 0; i < boxes.length; i++) {
+        boxes[i].disabled = false;
+    }
     currentTurn = 0;
 });
 function checkWin() {    
@@ -51,6 +54,9 @@ function checkWin() {
         const allSame = valA === valB && valB === valC;
         if (valA != "" && allSame) {
             winnerText.textContent = valA + " won!";
+            for (let i = 0; i < boxes.length; i++) {
+                boxes[i].disabled = true;
+            }
         }
         let filled = 0;
         for (let i = 0; i < boxes.length; i++) {
